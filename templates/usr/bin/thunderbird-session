@@ -1,0 +1,8 @@
+#!/bin/bash
+if [ ! -f "${HOME}/Thunderbird/prefs.js" ]; then
+  echo "profile does not exist, creating new one"
+  touch "${HOME}/Thunderbird/prefs.js"
+  exec /usr/bin/thunderbird --profile "${HOME}/Thunderbird/" -CreateProfile "Default User" "$@"
+else
+  exec /usr/bin/thunderbird --profile "${HOME}/Thunderbird/" "$@"
+fi
